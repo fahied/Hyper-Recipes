@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5BA8AEDC17C7BB7F00EEC9ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA8AEDB17C7BB7F00EEC9ED /* CoreData.framework */; };
+		5BA8AEDF17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8AEDD17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld */; };
 		5BE2B28217C7AE9A0031A7CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2B28117C7AE9A0031A7CE /* UIKit.framework */; };
 		5BE2B28417C7AE9A0031A7CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2B28317C7AE9A0031A7CE /* Foundation.framework */; };
 		5BE2B28617C7AE9A0031A7CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2B28517C7AE9A0031A7CE /* CoreGraphics.framework */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		427EEE498E894D6E80695CF6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		5BA8AEDB17C7BB7F00EEC9ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5BA8AEDE17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HyperRecipes.xcdatamodel; sourceTree = "<group>"; };
 		5BE2B27E17C7AE9A0031A7CE /* Hyper Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyper Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE2B28117C7AE9A0031A7CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5BE2B28317C7AE9A0031A7CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +93,7 @@
 				5BE2B29017C7AE9A0031A7CE /* AppDelegate.h */,
 				5BE2B29117C7AE9A0031A7CE /* AppDelegate.m */,
 				5BE2B28817C7AE9A0031A7CE /* Supporting Files */,
+				5BA8AEDD17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld */,
 			);
 			path = "Hyper Recipes";
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			files = (
 				5BE2B28E17C7AE9A0031A7CE /* main.m in Sources */,
 				5BE2B29217C7AE9A0031A7CE /* AppDelegate.m in Sources */,
+				5BA8AEDF17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +334,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5BA8AEDD17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5BA8AEDE17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodel */,
+			);
+			currentVersion = 5BA8AEDE17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodel */;
+			path = HyperRecipes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5BE2B27617C7AE9A0031A7CE /* Project object */;
 }
