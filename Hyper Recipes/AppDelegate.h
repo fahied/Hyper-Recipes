@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MagicalRecord/MagicalRecord.h>
+#import <CoreData+MagicalRecord.h>
+#import <RestKit/RestKit.h>
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
