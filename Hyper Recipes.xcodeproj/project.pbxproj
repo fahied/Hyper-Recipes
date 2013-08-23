@@ -1,0 +1,287 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5BE2B28217C7AE9A0031A7CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2B28117C7AE9A0031A7CE /* UIKit.framework */; };
+		5BE2B28417C7AE9A0031A7CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2B28317C7AE9A0031A7CE /* Foundation.framework */; };
+		5BE2B28617C7AE9A0031A7CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2B28517C7AE9A0031A7CE /* CoreGraphics.framework */; };
+		5BE2B28C17C7AE9A0031A7CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BE2B28A17C7AE9A0031A7CE /* InfoPlist.strings */; };
+		5BE2B28E17C7AE9A0031A7CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE2B28D17C7AE9A0031A7CE /* main.m */; };
+		5BE2B29217C7AE9A0031A7CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE2B29117C7AE9A0031A7CE /* AppDelegate.m */; };
+		5BE2B29417C7AE9A0031A7CE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE2B29317C7AE9A0031A7CE /* Default.png */; };
+		5BE2B29617C7AE9A0031A7CE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE2B29517C7AE9A0031A7CE /* Default@2x.png */; };
+		5BE2B29817C7AE9A0031A7CE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE2B29717C7AE9A0031A7CE /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5BE2B27E17C7AE9A0031A7CE /* Hyper Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyper Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BE2B28117C7AE9A0031A7CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5BE2B28317C7AE9A0031A7CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5BE2B28517C7AE9A0031A7CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5BE2B28917C7AE9A0031A7CE /* Hyper Recipes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hyper Recipes-Info.plist"; sourceTree = "<group>"; };
+		5BE2B28B17C7AE9A0031A7CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5BE2B28D17C7AE9A0031A7CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5BE2B28F17C7AE9A0031A7CE /* Hyper Recipes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hyper Recipes-Prefix.pch"; sourceTree = "<group>"; };
+		5BE2B29017C7AE9A0031A7CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5BE2B29117C7AE9A0031A7CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5BE2B29317C7AE9A0031A7CE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5BE2B29517C7AE9A0031A7CE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5BE2B29717C7AE9A0031A7CE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5BE2B27B17C7AE9A0031A7CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BE2B28217C7AE9A0031A7CE /* UIKit.framework in Frameworks */,
+				5BE2B28417C7AE9A0031A7CE /* Foundation.framework in Frameworks */,
+				5BE2B28617C7AE9A0031A7CE /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5BE2B27517C7AE9A0031A7CE = {
+			isa = PBXGroup;
+			children = (
+				5BE2B28717C7AE9A0031A7CE /* Hyper Recipes */,
+				5BE2B28017C7AE9A0031A7CE /* Frameworks */,
+				5BE2B27F17C7AE9A0031A7CE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5BE2B27F17C7AE9A0031A7CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5BE2B27E17C7AE9A0031A7CE /* Hyper Recipes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5BE2B28017C7AE9A0031A7CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BE2B28117C7AE9A0031A7CE /* UIKit.framework */,
+				5BE2B28317C7AE9A0031A7CE /* Foundation.framework */,
+				5BE2B28517C7AE9A0031A7CE /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5BE2B28717C7AE9A0031A7CE /* Hyper Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				5BE2B29017C7AE9A0031A7CE /* AppDelegate.h */,
+				5BE2B29117C7AE9A0031A7CE /* AppDelegate.m */,
+				5BE2B28817C7AE9A0031A7CE /* Supporting Files */,
+			);
+			path = "Hyper Recipes";
+			sourceTree = "<group>";
+		};
+		5BE2B28817C7AE9A0031A7CE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5BE2B28917C7AE9A0031A7CE /* Hyper Recipes-Info.plist */,
+				5BE2B28A17C7AE9A0031A7CE /* InfoPlist.strings */,
+				5BE2B28D17C7AE9A0031A7CE /* main.m */,
+				5BE2B28F17C7AE9A0031A7CE /* Hyper Recipes-Prefix.pch */,
+				5BE2B29317C7AE9A0031A7CE /* Default.png */,
+				5BE2B29517C7AE9A0031A7CE /* Default@2x.png */,
+				5BE2B29717C7AE9A0031A7CE /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5BE2B27D17C7AE9A0031A7CE /* Hyper Recipes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BE2B29B17C7AE9A0031A7CE /* Build configuration list for PBXNativeTarget "Hyper Recipes" */;
+			buildPhases = (
+				5BE2B27A17C7AE9A0031A7CE /* Sources */,
+				5BE2B27B17C7AE9A0031A7CE /* Frameworks */,
+				5BE2B27C17C7AE9A0031A7CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hyper Recipes";
+			productName = "Hyper Recipes";
+			productReference = 5BE2B27E17C7AE9A0031A7CE /* Hyper Recipes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5BE2B27617C7AE9A0031A7CE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Fahied;
+			};
+			buildConfigurationList = 5BE2B27917C7AE9A0031A7CE /* Build configuration list for PBXProject "Hyper Recipes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5BE2B27517C7AE9A0031A7CE;
+			productRefGroup = 5BE2B27F17C7AE9A0031A7CE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5BE2B27D17C7AE9A0031A7CE /* Hyper Recipes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5BE2B27C17C7AE9A0031A7CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BE2B28C17C7AE9A0031A7CE /* InfoPlist.strings in Resources */,
+				5BE2B29417C7AE9A0031A7CE /* Default.png in Resources */,
+				5BE2B29617C7AE9A0031A7CE /* Default@2x.png in Resources */,
+				5BE2B29817C7AE9A0031A7CE /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5BE2B27A17C7AE9A0031A7CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BE2B28E17C7AE9A0031A7CE /* main.m in Sources */,
+				5BE2B29217C7AE9A0031A7CE /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5BE2B28A17C7AE9A0031A7CE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BE2B28B17C7AE9A0031A7CE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5BE2B29917C7AE9A0031A7CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5BE2B29A17C7AE9A0031A7CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5BE2B29C17C7AE9A0031A7CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hyper Recipes/Hyper Recipes-Prefix.pch";
+				INFOPLIST_FILE = "Hyper Recipes/Hyper Recipes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5BE2B29D17C7AE9A0031A7CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hyper Recipes/Hyper Recipes-Prefix.pch";
+				INFOPLIST_FILE = "Hyper Recipes/Hyper Recipes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5BE2B27917C7AE9A0031A7CE /* Build configuration list for PBXProject "Hyper Recipes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BE2B29917C7AE9A0031A7CE /* Debug */,
+				5BE2B29A17C7AE9A0031A7CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BE2B29B17C7AE9A0031A7CE /* Build configuration list for PBXNativeTarget "Hyper Recipes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BE2B29C17C7AE9A0031A7CE /* Debug */,
+				5BE2B29D17C7AE9A0031A7CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5BE2B27617C7AE9A0031A7CE /* Project object */;
+}
