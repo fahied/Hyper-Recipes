@@ -63,6 +63,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BA8AEE917C922FD00EEC9ED /* models */ = {
+			isa = PBXGroup;
+			children = (
+				5BA8AEDD17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld */,
+				5BA8AEE617C7CBE400EEC9ED /* Recipe.h */,
+				5BA8AEE717C7CBE400EEC9ED /* Recipe.m */,
+				5BA8AEE017C7CB9400EEC9ED /* Photo.h */,
+				5BA8AEE117C7CB9400EEC9ED /* Photo.m */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
 		5BE2B27517C7AE9A0031A7CE = {
 			isa = PBXGroup;
 			children = (
@@ -98,12 +110,8 @@
 			children = (
 				5BE2B29017C7AE9A0031A7CE /* AppDelegate.h */,
 				5BE2B29117C7AE9A0031A7CE /* AppDelegate.m */,
+				5BA8AEE917C922FD00EEC9ED /* models */,
 				5BE2B28817C7AE9A0031A7CE /* Supporting Files */,
-				5BA8AEE617C7CBE400EEC9ED /* Recipe.h */,
-				5BA8AEE717C7CBE400EEC9ED /* Recipe.m */,
-				5BA8AEDD17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld */,
-				5BA8AEE017C7CB9400EEC9ED /* Photo.h */,
-				5BA8AEE117C7CB9400EEC9ED /* Photo.m */,
 			);
 			path = "Hyper Recipes";
 			sourceTree = "<group>";
