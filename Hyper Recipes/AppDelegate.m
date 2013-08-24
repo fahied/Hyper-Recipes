@@ -7,11 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import <Reachability/Reachability.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+ 
+    // Detect the Network availablity using Reachablity Libaray
+    [self configureReachablity];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -44,6 +49,33 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma Utility Methods
+/**
+ *  Configure detection of network stastus using Reachablity open source libaray v3.1.1 
+ */
+-(void)configureReachablity
+{
+    
+    // Allocate a reachability object
+    Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    // Set the blocks
+    reach.reachableBlock = ^(Reachability*reach)
+    {
+        _isReachable = YES;
+        NSLog(@"INTERNET REACHABLE!");
+    };
+    
+    reach.unreachableBlock = ^(Reachability*reach)
+    {
+        _isReachable= NO;
+        NSLog(@"INTERNET UNREACHABLE!");
+    };
+    
+    // Start the notifier, which will cause the reachability object to retain itself!
+    [reach startNotifier];
 }
 
 @end

@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreData+MagicalRecord.h>
-#import <RestKit/RestKit.h>
+
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+/**
+ *  Boolean that keep the status of network either it is online or offline
+ */
+@property (assign) BOOL isReachable;
 
 @end
