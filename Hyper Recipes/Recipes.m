@@ -17,14 +17,15 @@
 
 +(BOOL)didDownloadAllRecipes
 {
-    //[Recipe MR_truncateAll];
+    [Recipe MR_truncateAll];
     
     
     RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
     
     RKEntityMapping *recipeMapping = [RKEntityMapping mappingForEntityForName:@"Recipe" inManagedObjectStore:managedObjectStore];
     
-    [recipeMapping addAttributeMappingsFromDictionary:@{ @"name" :@"name"}];
+    [recipeMapping addAttributeMappingsFromDictionary:@{ @"id" :@"recipeID",@"name" :@"name",@"description":@"recipeDescription",
+     @"instructions" :@"instructions",@"favorite" :@"favorite",@"difficulty" :@"difficulty"}];
     
     // Create our new Person mapping
     //RKObjectMapping* personMapping = [RKObjectMapping mappingForClass:[Person class] ];

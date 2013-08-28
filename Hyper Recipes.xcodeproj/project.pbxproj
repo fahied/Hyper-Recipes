@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1F93F317CE742800A8B919 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F93F217CE742800A8B919 /* Recipe.m */; };
 		5BA8AEDC17C7BB7F00EEC9ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA8AEDB17C7BB7F00EEC9ED /* CoreData.framework */; };
 		5BA8AEDF17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8AEDD17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld */; };
 		5BAA16CB17C932EC0048F07E /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA16CA17C932EC0048F07E /* Photo.m */; };
-		5BAA16CE17C9337A0048F07E /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA16CD17C9337A0048F07E /* Recipe.m */; };
 		5BAA16D217C93A770048F07E /* Recipes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA16D117C93A770048F07E /* Recipes.m */; };
 		5BAF01FC17C9309100FE6A72 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAF01FB17C9309100FE6A72 /* SystemConfiguration.framework */; };
 		5BAF01FE17C9309800FE6A72 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAF01FD17C9309800FE6A72 /* MobileCoreServices.framework */; };
@@ -28,12 +28,12 @@
 
 /* Begin PBXFileReference section */
 		427EEE498E894D6E80695CF6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		5B1F93F117CE742800A8B919 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
+		5B1F93F217CE742800A8B919 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
 		5BA8AEDB17C7BB7F00EEC9ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5BA8AEDE17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HyperRecipes.xcdatamodel; sourceTree = "<group>"; };
 		5BAA16C917C932EC0048F07E /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		5BAA16CA17C932EC0048F07E /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
-		5BAA16CC17C9337A0048F07E /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
-		5BAA16CD17C9337A0048F07E /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
 		5BAA16D017C93A770048F07E /* Recipes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipes.h; sourceTree = "<group>"; };
 		5BAA16D117C93A770048F07E /* Recipes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipes.m; sourceTree = "<group>"; };
 		5BAF01FB17C9309100FE6A72 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -76,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				5BA8AEDD17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld */,
-				5BAA16CC17C9337A0048F07E /* Recipe.h */,
-				5BAA16CD17C9337A0048F07E /* Recipe.m */,
+				5B1F93F117CE742800A8B919 /* Recipe.h */,
+				5B1F93F217CE742800A8B919 /* Recipe.m */,
 				5BAA16C917C932EC0048F07E /* Photo.h */,
 				5BAA16CA17C932EC0048F07E /* Photo.m */,
 			);
@@ -255,8 +255,8 @@
 				5BE2B29217C7AE9A0031A7CE /* AppDelegate.m in Sources */,
 				5BA8AEDF17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld in Sources */,
 				5BAA16CB17C932EC0048F07E /* Photo.m in Sources */,
-				5BAA16CE17C9337A0048F07E /* Recipe.m in Sources */,
 				5BAA16D217C93A770048F07E /* Recipes.m in Sources */,
+				5B1F93F317CE742800A8B919 /* Recipe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
