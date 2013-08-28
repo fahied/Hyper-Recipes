@@ -1,18 +1,15 @@
 //
-//  Photo.m
+//  Recipes.h
 //  Hyper Recipes
 //
 //  Created by Fahied on 8/24/13.
 //  Copyright (c) 2013 Fahied. All rights reserved.
 //
 
-#import "Photo.h"
-#import "Recipe.h"
+#import <Foundation/Foundation.h>
 
+@interface Recipes : NSObject
 
-@implementation Photo
-
-@dynamic url;
-@dynamic recipe;
++(BOOL)didDownloadAllRecipes;
 
 @end

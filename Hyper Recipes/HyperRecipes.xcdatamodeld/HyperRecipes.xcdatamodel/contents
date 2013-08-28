@@ -2,6 +2,7 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Photo" representedClassName="Photo" syncable="YES">
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipe" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="photo" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="Recipe" representedClassName="Recipe" syncable="YES">
         <attribute name="difficulty" attributeType="String" syncable="YES"/>
@@ -10,10 +11,10 @@
         <attribute name="name" attributeType="String" minValueString="3" syncable="YES"/>
         <attribute name="recipeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recipeID" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
-        <relationship name="photo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" syncable="YES"/>
+        <relationship name="photo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="recipe" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Photo" positionX="504" positionY="72" width="128" height="73"/>
         <element name="Recipe" positionX="160" positionY="192" width="128" height="148"/>
-        <element name="Photo" positionX="504" positionY="72" width="128" height="58"/>
     </elements>
 </model>

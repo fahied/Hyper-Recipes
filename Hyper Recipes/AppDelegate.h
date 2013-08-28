@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
 
 
 
@@ -18,5 +19,11 @@
  *  Boolean that keep the status of network either it is online or offline
  */
 @property (assign) BOOL isReachable;
+
+
+/**
+ *  <#Description#>
+ */
+@property(strong, nonatomic) RKObjectManager *objectManager;
 
 @end

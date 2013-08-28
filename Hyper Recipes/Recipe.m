@@ -2,7 +2,7 @@
 //  Recipe.m
 //  Hyper Recipes
 //
-//  Created by Fahied on 8/23/13.
+//  Created by Fahied on 8/24/13.
 //  Copyright (c) 2013 Fahied. All rights reserved.
 //
 
@@ -12,11 +12,11 @@
 
 @implementation Recipe
 
-@dynamic name;
 @dynamic difficulty;
-@dynamic recipeDescription;
-@dynamic instructions;
 @dynamic favorite;
+@dynamic instructions;
+@dynamic name;
+@dynamic recipeDescription;
 @dynamic recipeID;
 @dynamic photo;
 

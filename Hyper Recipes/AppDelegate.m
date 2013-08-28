@@ -8,6 +8,22 @@
 
 #import "AppDelegate.h"
 #import <Reachability/Reachability.h>
+#import <CoreData+MagicalRecord.h>
+
+#import "Recipe.h"
+#import "Photo.h"
+
+#import "Recipes.h"
+
+
+#define SERVER_URL @"http://hyper-recipes.herokuapp.com/"
+
+
+// Use a class extension to expose access to MagicalRecord's private setter methods
+@interface NSManagedObjectContext ()
++ (void)MR_setRootSavingContext:(NSManagedObjectContext *)context;
++ (void)MR_setDefaultContext:(NSManagedObjectContext *)moc;
+@end
 
 @implementation AppDelegate
 
@@ -16,6 +32,46 @@
  
     // Detect the Network availablity using Reachablity Libaray
     [self configureReachablity];
+    
+    
+    //
+    // Configure RestKit's Core Data stack
+    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HyperRecipes" ofType:@"momd"]];
+    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"HyperRecipes.sqlite"];
+    NSError *error = nil;
+    [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    [managedObjectStore createManagedObjectContexts];
+    
+    
+    
+    // Configure MagicalRecord to use RestKit's Core Data stack
+    [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:managedObjectStore.persistentStoreCoordinator];
+    [NSManagedObjectContext MR_setRootSavingContext:managedObjectStore.persistentStoreManagedObjectContext];
+    [NSManagedObjectContext MR_setDefaultContext:managedObjectStore.mainQueueManagedObjectContext];
+    
+    
+    // Initialize RestKit
+    _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:SERVER_URL]];
+    
+//    Photo *photo = [Photo MR_createEntity];
+//    photo.url = @"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/8/BlueberryCobbler.jpg";
+//    
+//    Recipe *recipe = [Recipe MR_createEntity];
+//    recipe.photo = photo;
+//
+//    recipe.name = @"Blueberry Cobbler";
+//    recipe.recipeDescription =@"I have tinkered and tinkered, and this is the very best blueberry cobbler recipe I have found.";
+//    recipe.instructions=  @"";
+//    recipe.favorite = @1;
+//    recipe.difficulty = @"1.0";
+//    
+//    //Save to Core-DATA using Magical Records
+//    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveOnlySelfAndWait];
+
+    [Recipes didDownloadAllRecipes];
+    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
