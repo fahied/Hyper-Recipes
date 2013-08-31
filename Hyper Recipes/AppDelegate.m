@@ -62,14 +62,14 @@
     Recipe *recipe = [Recipe MR_createEntity];
     recipe.photo = photo;
 
-    recipe.name = @"Fahied TESTING AFNETWORK POST 1";
+    recipe.name = @"Fahied TESTING AFNETWORK PUT 1";
     recipe.recipeDescription = @"I, not events, have the power to make me happy or unhappy today. I can choose which it shall be. Yesterday is dead, tomorrow hasn't arrived yet. I have just one day, today, and I'm going to be happy in it.";
     recipe.instructions=  @" Follow the will!";
     recipe.favorite = @1;
     recipe.difficulty = @"1.0";
     
-    [Recipes postRecipe:recipe WithCompletion:^(BOOL success, NSError *error)
-    {
+    [Recipes putRecipe:recipe WithCompletion:^(BOOL success, NSError *error){
+        
         if (success) {
             
             NSLog(@"recipe posted to server successfully");

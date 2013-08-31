@@ -17,8 +17,8 @@
 +(void)postRecipe:(Recipe*)recipe WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock;
 
 
-+(void)putRecipe:(Recipe*) recipe;
++(void)putRecipe:(Recipe*)recipe WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock;
 
-+(void)deleteRecipe:(NSInteger)recipeID;
++(void)deleteRecipe:(NSInteger)recipeID WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock;
 
 @end

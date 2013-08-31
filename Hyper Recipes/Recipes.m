@@ -14,6 +14,8 @@
 
 #import "HRAPIClient.h"
 
+#import "NSManagedObject+Serialization.h"
+
 @implementation Recipes
 
 
@@ -90,10 +92,7 @@
                                                                                              mimeType:@"image/jpg"];
                                                                  }];
     
-    
-    
     AFHTTPRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:postRequest];
-
 
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -110,8 +109,51 @@
     [[HRAPIClient sharedClient] enqueueHTTPRequestOperation:operation];
 }
 
-+(void)putRecipe:(Recipe*) recipe
+
+
+
+
+
++(void)putRecipe:(Recipe*)recipe WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
 {
+    
+    NSDictionary *params = @{
+                             @"recipe[name]" : recipe.name,
+                             @"recipe[difficulty]" : recipe.difficulty,
+                             @"recipe[description]" : recipe.recipeDescription
+                             };
+    
+    //formulate route by appenting recipt at the end of the base route for updating recipes
+    NSString *route = [@"/recipes/" stringByAppendingFormat:@"%@",/*recipe.recipeID*/@79];
+    
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/19/Country_apple_dumplings-1500x1125.jpg"]];
+    
+    NSURLRequest *postRequest = [[HRAPIClient sharedClient] multipartFormRequestWithMethod:@"PUT"
+                                                                                      path:route
+                                                                                parameters:params
+                                                                 constructingBodyWithBlock:^(id formData) {
+                                                                     [formData appendPartWithFileData:imageData
+                                                                                                 name:@"recipe[photo]"
+                                                                                             fileName:@"Country_apple_dumplings-1500x1125.jpg"
+                                                                                             mimeType:@"image/jpg"];
+                                                                 }];
+    
+    AFHTTPRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:postRequest];
+    
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // Server give response code 204 if the operation was successfull
+        if (operation.response.statusCode == 204) {
+            NSLog(@"Created, %@", responseObject);
+            completionBlock(YES, nil);
+        } else {
+            completionBlock(NO, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completionBlock(NO, error);
+    }];
+    
+    [[HRAPIClient sharedClient] enqueueHTTPRequestOperation:operation];
     
 }
 
