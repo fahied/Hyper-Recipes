@@ -39,6 +39,7 @@
     NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HyperRecipes" ofType:@"momd"]];
     NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
     RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    
     NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"HyperRecipes.sqlite"];
     NSError *error = nil;
     [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
@@ -55,22 +56,42 @@
     // Initialize RestKit
     _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:SERVER_URL]];
     
-//    Photo *photo = [Photo MR_createEntity];
-//    photo.url = @"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/8/BlueberryCobbler.jpg";
-//    
-//    Recipe *recipe = [Recipe MR_createEntity];
-//    recipe.photo = photo;
-//
-//    recipe.name = @"Blueberry Cobbler";
-//    recipe.recipeDescription =@"I have tinkered and tinkered, and this is the very best blueberry cobbler recipe I have found.";
-//    recipe.instructions=  @"";
-//    recipe.favorite = @1;
-//    recipe.difficulty = @"1.0";
-//    
-//    //Save to Core-DATA using Magical Records
-//    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveOnlySelfAndWait];
+    Photo *photo = [Photo MR_createEntity];
+    photo.url = @"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/8/BlueberryCobbler.jpg";
+    
+    Recipe *recipe = [Recipe MR_createEntity];
+    recipe.photo = photo;
 
-    [Recipes didDownloadAllRecipes];
+    recipe.name = @"Fahied TESTING AFNETWORK POST 1";
+    recipe.recipeDescription = @"I, not events, have the power to make me happy or unhappy today. I can choose which it shall be. Yesterday is dead, tomorrow hasn't arrived yet. I have just one day, today, and I'm going to be happy in it.";
+    recipe.instructions=  @" Follow the will!";
+    recipe.favorite = @1;
+    recipe.difficulty = @"1.0";
+    
+    [Recipes postRecipe:recipe WithCompletion:^(BOOL success, NSError *error)
+    {
+        if (success) {
+            
+            NSLog(@"recipe posted to server successfully");
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+                
+                if (success) {
+                    //TODO: refresh view by fetch Core-data items
+                }
+            }];
+        }
+        else
+        {
+            NSLog(@"recipe did not to server successfully");
+            //TODO: keep record of un-sent items and post them to server as soon as the internet is avialable
+        }
+    }];
+
+
+    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
+    {
+        NSLog(@"Refresh View");
+    }];
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

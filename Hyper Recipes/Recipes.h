@@ -7,9 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Recipe.h"
 
 @interface Recipes : NSObject
 
-+(BOOL)didDownloadAllRecipes;
++(void)getRecipesWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock;
+
+
++(void)postRecipe:(Recipe*)recipe WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock;
+
+
++(void)putRecipe:(Recipe*) recipe;
+
++(void)deleteRecipe:(NSInteger)recipeID;
 
 @end

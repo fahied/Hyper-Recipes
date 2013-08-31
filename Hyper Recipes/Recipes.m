@@ -12,10 +12,12 @@
 #import <CoreData+MagicalRecord.h>
 #import <RestKit/RestKit.h>
 
+#import "HRAPIClient.h"
+
 @implementation Recipes
 
 
-+(BOOL)didDownloadAllRecipes
++(void)getRecipesWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
 {
     [Recipe MR_truncateAll];
     
@@ -39,16 +41,9 @@
     
     [recipeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"photo" withMapping:photoMapping]];
     
-    
-    
     RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     
-//    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:photoMapping pathPattern:nil keyPath:@"" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-//    
-//    
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:recipeMapping method:RKRequestMethodGET pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    
-    
     
     
     NSString *requestURL = @"http://hyper-recipes.herokuapp.com/recipes";
@@ -62,14 +57,72 @@
     
     [[NSOperationQueue currentQueue] addOperation:managedObjectRequestOperation];
     
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Vent!" message:@"Applikasjonen oppdateres" delegate:nil cancelButtonTitle:@"Vent...!" otherButtonTitles: nil];
-    [alert show];
-    [managedObjectRequestOperation setCompletionBlock:^{
-        NSLog(@"MyOp completed");
-        [alert dismissWithClickedButtonIndex:0 animated:YES];
+    [managedObjectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        completionBlock(YES, nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        
+        completionBlock(NO, error);
+    }];
+}
+
+
+
+
++(void)postRecipe:(Recipe*)recipe WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
+{
+    
+    NSDictionary *params = @{
+                             @"recipe[name]" : recipe.name,
+                             @"recipe[difficulty]" : recipe.difficulty,
+                             @"recipe[description]" : recipe.recipeDescription
+                             };
+    
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/19/Country_apple_dumplings-1500x1125.jpg"]];
+    
+    NSURLRequest *postRequest = [[HRAPIClient sharedClient] multipartFormRequestWithMethod:@"POST"
+                                                                                      path:@"/recipes"
+                                                                                parameters:params
+                                                                 constructingBodyWithBlock:^(id formData) {
+                                                                     [formData appendPartWithFileData:imageData
+                                                                                                 name:@"recipe[photo]"
+                                                                                             fileName:@"Country_apple_dumplings-1500x1125.jpg"
+                                                                                             mimeType:@"image/jpg"];
+                                                                 }];
+    
+    
+    
+    AFHTTPRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:postRequest];
+
+
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (operation.response.statusCode == 200 || operation.response.statusCode == 201) {
+            NSLog(@"Created, %@", responseObject);
+            completionBlock(YES, nil);
+        } else {
+            completionBlock(NO, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completionBlock(NO, error);
     }];
     
-    return YES;
+    [[HRAPIClient sharedClient] enqueueHTTPRequestOperation:operation];
 }
+
++(void)putRecipe:(Recipe*) recipe
+{
+    
+}
+
++(void)deleteRecipe:(NSInteger)recipeID
+{
+}
+
+
+
+
+
+
 
 @end
