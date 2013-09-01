@@ -19,20 +19,32 @@
 @implementation Recipes
 
 
+
+
+/**
+ *  Get the list of recipes in JSON format from server and mapp json objects to Core-Data Using RESTKIT API
+ *
+ *  @param completionBlock set bool success=YES if the operation was successful otherwise NO with an error.
+ */
 +(void)getRecipesWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
 {
+    
+    //TODO: make server responsible to provide the records that have been newly made after a certain date or modified.
+    
+    // delete all records from core-data
     [Recipe MR_truncateAll];
     
+    //prepare to fetch new records from server
     
     RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
     
+    // Create new Recipe mapping
     RKEntityMapping *recipeMapping = [RKEntityMapping mappingForEntityForName:@"Recipe" inManagedObjectStore:managedObjectStore];
     
     [recipeMapping addAttributeMappingsFromDictionary:@{ @"id" :@"recipeID",@"name" :@"name",@"description":@"recipeDescription",
      @"instructions" :@"instructions",@"favorite" :@"favorite",@"difficulty" :@"difficulty"}];
     
-    // Create our new Person mapping
-    //RKObjectMapping* personMapping = [RKObjectMapping mappingForClass:[Person class] ];
+    // Create new Photo mapping
     RKEntityMapping *photoMapping = [RKEntityMapping mappingForEntityForName:@"Photo" inManagedObjectStore:managedObjectStore];
     
     
@@ -43,6 +55,7 @@
     
     [recipeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"photo" withMapping:photoMapping]];
     
+    //pre
     RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:recipeMapping method:RKRequestMethodGET pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -71,6 +84,13 @@
 
 
 
+
+/**
+ *  Create new recipe on server and store ref in coredata
+ *
+ *  @param recipe          the core-data object corressponding to recipe
+ *  @param completionBlock set bool success=YES if the operation was successful otherwise NO with an error.
+ */
 +(void)postRecipe:(Recipe*)recipe WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
 {
     
@@ -113,7 +133,12 @@
 
 
 
-
+/**
+ *  Modify the content of an existing Recipe
+ *
+ *  @param recipe          the core-data object corressponding to recipe
+ *  @param completionBlock set bool success=YES if the operation was successful otherwise NO with an error.
+ */
 +(void)putRecipe:(Recipe*)recipe WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
 {
     
@@ -128,7 +153,7 @@
     
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/19/Country_apple_dumplings-1500x1125.jpg"]];
     
-    NSURLRequest *postRequest = [[HRAPIClient sharedClient] multipartFormRequestWithMethod:@"PUT"
+    NSURLRequest *putRequest = [[HRAPIClient sharedClient] multipartFormRequestWithMethod:@"PUT"
                                                                                       path:route
                                                                                 parameters:params
                                                                  constructingBodyWithBlock:^(id formData) {
@@ -138,7 +163,7 @@
                                                                                              mimeType:@"image/jpg"];
                                                                  }];
     
-    AFHTTPRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:postRequest];
+    AFHTTPRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:putRequest];
     
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -153,12 +178,45 @@
         completionBlock(NO, error);
     }];
     
-    [[HRAPIClient sharedClient] enqueueHTTPRequestOperation:operation];
+    [[HRAPIClient sharedClient] enqueueHTTPRequestOperation:operation];    
     
 }
 
-+(void)deleteRecipe:(NSInteger)recipeID
+
+
+
+
+
+/**
+ *  Delete a perticular Recipe by ID
+ *
+ *  @param recipeID
+ *  @param completionBlock set bool success=YES if the operation was successful otherwise NO with an error.
+ */
++(void)deleteRecipe:(NSInteger)recipeID WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
 {
+        
+    //formulate route by appenting recipt at the end of the base route for delete recipes
+    NSString *route = [@"/recipes/" stringByAppendingFormat:@"%ld",(long)recipeID];
+    
+    NSURLRequest *putRequest = [[HRAPIClient sharedClient] requestWithMethod:@"DELETE" path:route parameters:nil];
+    
+    AFHTTPRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:putRequest];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // Server give response code 204 if the operation was successfull
+        if (operation.response.statusCode == 204) {
+            NSLog(@"deleted, %@", responseObject);
+            completionBlock(YES, nil);
+        } else {
+            completionBlock(NO, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completionBlock(NO, error);
+    }];
+    
+    [[HRAPIClient sharedClient] enqueueHTTPRequestOperation:operation];
+
 }
 
 

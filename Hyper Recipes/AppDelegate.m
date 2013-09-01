@@ -56,43 +56,51 @@
     // Initialize RestKit
     _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:SERVER_URL]];
     
-    Photo *photo = [Photo MR_createEntity];
-    photo.url = @"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/8/BlueberryCobbler.jpg";
+//    Photo *photo = [Photo MR_createEntity];
+//    photo.url = @"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/8/BlueberryCobbler.jpg";
+//    
+//    Recipe *recipe = [Recipe MR_createEntity];
+//    recipe.photo = photo;
+//
+//    recipe.name = @"Fahied TESTING AFNETWORK Post 2";
+//    recipe.recipeDescription = @"I, not events, have the power to make me happy or unhappy today. I can choose which it shall be. Yesterday is dead, tomorrow hasn't arrived yet. I have just one day, today, and I'm going to be happy in it.";
+//    recipe.instructions=  @" Follow the will!";
+//    recipe.favorite = @1;
+//    recipe.difficulty = @"1.0";
+//    
+//    [Recipes postRecipe:recipe WithCompletion:^(BOOL success, NSError *error){
+//        
+//        if (success) {
+//            
+//            NSLog(@"recipe posted to server successfully");
+//            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+//                
+//                if (success) {
+//                    //TODO: refresh view by fetch Core-data items
+//                }
+//            }];
+//        }
+//        else
+//        {
+//            NSLog(@"recipe did not to server successfully");
+//            //TODO: keep record of un-sent items and post them to server as soon as the internet is avialable
+//        }
+//    }];
+
+
+//    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
+//    {
+//        NSLog(@"Refresh View");
+//    }];
+
     
-    Recipe *recipe = [Recipe MR_createEntity];
-    recipe.photo = photo;
-
-    recipe.name = @"Fahied TESTING AFNETWORK PUT 1";
-    recipe.recipeDescription = @"I, not events, have the power to make me happy or unhappy today. I can choose which it shall be. Yesterday is dead, tomorrow hasn't arrived yet. I have just one day, today, and I'm going to be happy in it.";
-    recipe.instructions=  @" Follow the will!";
-    recipe.favorite = @1;
-    recipe.difficulty = @"1.0";
-    
-    [Recipes putRecipe:recipe WithCompletion:^(BOOL success, NSError *error){
-        
-        if (success) {
-            
-            NSLog(@"recipe posted to server successfully");
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-                
-                if (success) {
-                    //TODO: refresh view by fetch Core-data items
-                }
-            }];
-        }
-        else
-        {
-            NSLog(@"recipe did not to server successfully");
-            //TODO: keep record of un-sent items and post them to server as soon as the internet is avialable
-        }
-    }];
-
-
-    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
+    [Recipes deleteRecipe:80 WithCompletion:^(BOOL success, NSError *error)
     {
-        NSLog(@"Refresh View");
+        if (success) {
+            NSLog(@"Recipe delted");
+        }
+        
     }];
-    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
