@@ -33,6 +33,7 @@
     
     // delete all records from core-data
     [Recipe MR_truncateAll];
+    [Photo MR_truncateAll];
     
     //prepare to fetch new records from server
     

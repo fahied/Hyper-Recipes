@@ -8,12 +8,14 @@
 
 #import "AppDelegate.h"
 #import <Reachability/Reachability.h>
-#import <CoreData+MagicalRecord.h>
+
 
 #import "Recipe.h"
 #import "Photo.h"
-
 #import "Recipes.h"
+
+#import "FeedsViewController.h"
+
 
 
 #define SERVER_URL @"http://hyper-recipes.herokuapp.com/"
@@ -94,16 +96,21 @@
 //    }];
 
     
-    [Recipes deleteRecipe:80 WithCompletion:^(BOOL success, NSError *error)
-    {
-        if (success) {
-            NSLog(@"Recipe delted");
-        }
-        
-    }];
+//    [Recipes deleteRecipe:80 WithCompletion:^(BOOL success, NSError *error)
+//    {
+//        if (success) {
+//            NSLog(@"Recipe delted");
+//        }
+//        
+//    }];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    FeedsViewController *feedVC = [[FeedsViewController alloc]initWithNibName:@"FeedsViewController" bundle:nil];
+    
+    self.window.rootViewController = feedVC;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
