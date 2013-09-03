@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedsViewController.h"
 
 
 
@@ -19,6 +20,8 @@
  *  Boolean that keep the status of network either it is online or offline
  */
 @property (assign) BOOL isReachable;
+
+@property (nonatomic, strong) FeedsViewController *feedVC;
 
 
 /**

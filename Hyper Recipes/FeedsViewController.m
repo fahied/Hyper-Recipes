@@ -9,7 +9,9 @@
 #import "FeedsViewController.h"
 #import "FeedCell.h"
 
-#import "UIImageView+AFNetworking.h"
+#import <UIImageView+JMImageCache.h>
+
+
 #import "Recipe.h"
 #import "Photo.h"
 
@@ -44,7 +46,6 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     UINib *cellNib = [UINib nibWithNibName:@"FeedCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:kCellReuseIdentifier];
     
-    self.collectionView.backgroundColor = [UIColor redColor];
     
     [super viewDidLoad];
     
@@ -59,6 +60,13 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     [self.collectionView setCollectionViewLayout:flowLayout];
     [self.collectionView setAllowsSelection:YES];
 }
+
+-(void)refreshFeedViewController
+{
+    recipes = [NSArray arrayWithArray:[Recipe MR_findAll]];
+    [self.collectionView reloadData];
+}
+
 
 // collection view data source methods ////////////////////////////////////
 

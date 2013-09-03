@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
-
+-(void)refreshFeedViewController;
 
 
 @end

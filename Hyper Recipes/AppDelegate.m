@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Reachability/Reachability.h>
-
+#import <JMImageCache/JMImageCache.h>
 
 #import "Recipe.h"
 #import "Photo.h"
@@ -90,10 +90,11 @@
 //    }];
 
 
-//    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
-//    {
-//        NSLog(@"Refresh View");
-//    }];
+    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
+    {
+        NSLog(@"Refresh View");
+        [_feedVC refreshFeedViewController];
+    }];
 
     
 //    [Recipes deleteRecipe:80 WithCompletion:^(BOOL success, NSError *error)
@@ -107,9 +108,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    FeedsViewController *feedVC = [[FeedsViewController alloc]initWithNibName:@"FeedsViewController" bundle:nil];
+    _feedVC = [[FeedsViewController alloc]initWithNibName:@"FeedsViewController" bundle:nil];
     
-    self.window.rootViewController = feedVC;
+    self.window.rootViewController = _feedVC;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -141,6 +142,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    //Empty image cache
+    //[[JMImageCache sharedCache] removeAllObjects];
 }
 
 #pragma Utility Methods
