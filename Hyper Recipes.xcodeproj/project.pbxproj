@@ -19,6 +19,7 @@
 		18A02CC117D63A8B009ACDCE /* recipe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CC017D63A8A009ACDCE /* recipe.jpg */; };
 		18E05FE617D71F8C0041D264 /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E05FE517D71F8C0041D264 /* AFDownloadRequestOperation.m */; };
 		18E05FE817D72D5E0041D264 /* add_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E05FE717D72D5E0041D264 /* add_image.png */; };
+		18E05FEA17D740840041D264 /* cook.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E05FE917D740840041D264 /* cook.png */; };
 		5B1F93F317CE742800A8B919 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F93F217CE742800A8B919 /* Recipe.m */; };
 		5B262B4D17D21AFF0072F13D /* HRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B262B4C17D21AFF0072F13D /* HRAPIClient.m */; };
 		5B262B5817D249C70072F13D /* NSManagedObject+Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B262B5717D249C70072F13D /* NSManagedObject+Serialization.m */; };
@@ -56,6 +57,7 @@
 		18E05FE417D71F8C0041D264 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
 		18E05FE517D71F8C0041D264 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
 		18E05FE717D72D5E0041D264 /* add_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_image.png; sourceTree = "<group>"; };
+		18E05FE917D740840041D264 /* cook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cook.png; sourceTree = "<group>"; };
 		427EEE498E894D6E80695CF6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		5B1F93F117CE742800A8B919 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
 		5B1F93F217CE742800A8B919 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		18A02CB017D629BE009ACDCE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				18E05FE917D740840041D264 /* cook.png */,
 				18E05FE717D72D5E0041D264 /* add_image.png */,
 				18A02CC017D63A8A009ACDCE /* recipe.jpg */,
 				18A02CB617D633AF009ACDCE /* comment.png */,
@@ -309,6 +312,7 @@
 				18A02CBD17D633AF009ACDCE /* heart@2x.png in Resources */,
 				18A02CC117D63A8B009ACDCE /* recipe.jpg in Resources */,
 				18E05FE817D72D5E0041D264 /* add_image.png in Resources */,
+				18E05FEA17D740840041D264 /* cook.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -62,7 +62,7 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     
     refQueue = [[NSMutableArray alloc]init];
     
-    placeholder =[UIImage imageNamed:@"recipe.jpg"];
+    placeholder =[UIImage imageNamed:@"cook"];
     addImage = [UIImage imageNamed:@"add_image"];
     
     recipes = [NSArray arrayWithArray:[Recipe MR_findAll]];
@@ -182,7 +182,6 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
             [self refreshFeedViewController];
             [refresh endRefreshing];
         }];
-    
 }
 
 
