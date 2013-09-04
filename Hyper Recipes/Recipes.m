@@ -14,7 +14,6 @@
 
 #import "HRAPIClient.h"
 
-#import "NSManagedObject+Serialization.h"
 
 @implementation Recipes
 
