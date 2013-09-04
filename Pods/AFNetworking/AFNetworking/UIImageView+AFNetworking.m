@@ -146,6 +146,51 @@ static char kAFImageRequestOperationObjectKey;
     }
 }
 
+
+
+- (void)setImageWithURL:(NSURL *)url
+       placeholderImage:(UIImage *)placeholderImage
+useCachedImageToPlaceholder:(BOOL)useCachedImageToPlaceholder
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
+    
+    [self cancelImageRequestOperation];
+    
+    UIImage *cachedImage = [[[self class] af_sharedImageCache] cachedImageForRequest:request];
+    if (cachedImage) {
+        self.image = cachedImage;
+    }
+    else
+        self.image = placeholderImage;
+    
+    AFImageRequestOperation *requestOperation = [[AFImageRequestOperation alloc] initWithRequest:request];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([request isEqual:[self.af_imageRequestOperation request]]) {
+            if (responseObject) {
+                self.image = responseObject;
+            }
+            
+            if (self.af_imageRequestOperation == operation) {
+                self.af_imageRequestOperation = nil;
+            }
+        }
+        
+        [[[self class] af_sharedImageCache] cacheImage:responseObject forRequest:request];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if ([request isEqual:[self.af_imageRequestOperation request]]) {
+            
+            if (self.af_imageRequestOperation == operation) {
+                self.af_imageRequestOperation = nil;
+            }
+        }
+    }];
+    
+    self.af_imageRequestOperation = requestOperation;
+    
+    [[[self class] af_sharedImageRequestOperationQueue] addOperation:self.af_imageRequestOperation];
+}
+
 - (void)cancelImageRequestOperation {
     [self.af_imageRequestOperation cancel];
     self.af_imageRequestOperation = nil;

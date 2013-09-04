@@ -27,6 +27,8 @@
     UIImage *addImage;
     NSOperationQueue *queue;
     NSMutableArray *refQueue;
+    
+    NSMutableDictionary *cachedImages;
 }
 
 @end
@@ -61,6 +63,9 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     queue.MaxConcurrentOperationCount = 2;
     
     refQueue = [[NSMutableArray alloc]init];
+    
+    //cache 20 images to load view faster
+    cachedImages = [NSMutableDictionary dictionaryWithCapacity:20];
     
     placeholder =[UIImage imageNamed:@"cook"];
     addImage = [UIImage imageNamed:@"add_image"];
@@ -105,6 +110,7 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     Recipe *recipe = (Recipe*)[recipes objectAtIndex:indexPath.row];
     FeedCell *cell = (FeedCell*)[collectionView dequeueReusableCellWithReuseIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
     
@@ -116,26 +122,39 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     {
         NSString *imgPath = [self completeLocalPath:[recipe.photo.url lastPathComponent]];
         
-        if ([[NSFileManager defaultManager] fileExistsAtPath:imgPath])
+        if ([cachedImages objectForKey:imgPath])
         {
-            NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imgPath]];
-            cell.picImageView.image = [[UIImage alloc] initWithData:imgData];
+            cell.picImageView.image = [cachedImages objectForKey:imgPath];
         }
         else
         {
-            cell.picImageView.image = placeholder;
-            
-            [self downloadFile:recipe.photo.url WithCompletion:^(BOOL success, NSError *error)
-             {
-                 if (success)
+            if ([[NSFileManager defaultManager] fileExistsAtPath:imgPath])
+            {
+                NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imgPath]];
+                UIImage *image = [[UIImage alloc] initWithData:imgData];
+                cell.picImageView.image = image;
+                
+                [cachedImages setObject:image forKey:imgPath];
+            }
+            else
+            {
+                cell.picImageView.image = placeholder;
+                
+                [self downloadFile:recipe.photo.url WithCompletion:^(BOOL success, NSError *error)
                  {
+                     if (success)
+                     {
+                         NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imgPath]];
+                         UIImage *image = [[UIImage alloc] initWithData:imgData];
+                         cell.picImageView.image = image;
+                         
+                         [cachedImages setObject:image forKey:imgPath];
+                     }
                      
-                     NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imgPath]];
-                     cell.picImageView.image = [[UIImage alloc] initWithData:imgData];
-                 }
-                 
-             }];
+                 }];
+            }
         }
+        
     }
     else
     {

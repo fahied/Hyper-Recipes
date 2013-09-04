@@ -68,6 +68,15 @@
                        success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image))success
                        failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure;
 
+
+
+
+
+- (void)setImageWithURL:(NSURL *)url
+       placeholderImage:(UIImage *)placeholderImage
+useCachedImageToPlaceholder:(BOOL)useCachedImageToPlaceholder;
+
+
 /**
  Cancels any executing image request operation for the receiver, if one exists.
  */
