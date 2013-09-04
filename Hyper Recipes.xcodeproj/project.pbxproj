@@ -111,7 +111,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18A02CB017D629BE009ACDCE /* view */ = {
+		18A02CB017D629BE009ACDCE /* views */ = {
 			isa = PBXGroup;
 			children = (
 				18E05FE917D740840041D264 /* cook.png */,
@@ -125,18 +125,27 @@
 				18A02CB217D629DB009ACDCE /* FeedCell.m */,
 				18A02CB417D62B07009ACDCE /* FeedCell.xib */,
 			);
-			name = view;
+			name = views;
 			sourceTree = "<group>";
 		};
 		18E05FE317D71F7B0041D264 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				18E05FEB17D7420D0041D264 /* NSDate+Calculations.h */,
-				18E05FEC17D7420D0041D264 /* NSDate+Calculations.m */,
+				5BAA16CF17C93A5C0048F07E /* Controllers */,
+				5B262B4E17D21B6C0072F13D /* API */,
+				18E05FEE17D744660041D264 /* AFDownloader */,
+				5B262B5217D248F00072F13D /* Categories */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		18E05FEE17D744660041D264 /* AFDownloader */ = {
+			isa = PBXGroup;
+			children = (
 				18E05FE417D71F8C0041D264 /* AFDownloadRequestOperation.h */,
 				18E05FE517D71F8C0041D264 /* AFDownloadRequestOperation.m */,
 			);
-			name = Utilities;
+			name = AFDownloader;
 			sourceTree = "<group>";
 		};
 		5B262B4E17D21B6C0072F13D /* API */ = {
@@ -151,6 +160,8 @@
 		5B262B5217D248F00072F13D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				18E05FEB17D7420D0041D264 /* NSDate+Calculations.h */,
+				18E05FEC17D7420D0041D264 /* NSDate+Calculations.m */,
 				5B262B5617D249C70072F13D /* NSManagedObject+Serialization.h */,
 				5B262B5717D249C70072F13D /* NSManagedObject+Serialization.m */,
 			);
@@ -227,10 +238,7 @@
 				5BE2B29017C7AE9A0031A7CE /* AppDelegate.h */,
 				5BE2B29117C7AE9A0031A7CE /* AppDelegate.m */,
 				5BC0551917D38F5500969F3F /* View controllers */,
-				18A02CB017D629BE009ACDCE /* view */,
-				5B262B4E17D21B6C0072F13D /* API */,
-				5B262B5217D248F00072F13D /* Categories */,
-				5BAA16CF17C93A5C0048F07E /* Controllers */,
+				18A02CB017D629BE009ACDCE /* views */,
 				5BA8AEE917C922FD00EEC9ED /* Models */,
 				18E05FE317D71F7B0041D264 /* Utilities */,
 				5BE2B28817C7AE9A0031A7CE /* Supporting Files */,
