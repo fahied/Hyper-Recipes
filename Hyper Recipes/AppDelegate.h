@@ -22,6 +22,7 @@
 @property (assign) BOOL isReachable;
 
 @property (nonatomic, strong) FeedsViewController *feedVC;
+@property (nonatomic, strong) UINavigationController *navigationVC;
 
 
 /**

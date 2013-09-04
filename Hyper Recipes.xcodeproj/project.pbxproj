@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182721B417D76AB800BA9FD5 /* AddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182721B217D76AB800BA9FD5 /* AddRecipeViewController.m */; };
+		182721B517D76AB800BA9FD5 /* AddRecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182721B317D76AB800BA9FD5 /* AddRecipeViewController.xib */; };
 		18A02CAE17D628B3009ACDCE /* FeedsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A02CAC17D628B3009ACDCE /* FeedsViewController.m */; };
 		18A02CAF17D628B3009ACDCE /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CAD17D628B3009ACDCE /* FeedsViewController.xib */; };
 		18A02CB317D629DB009ACDCE /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A02CB217D629DB009ACDCE /* FeedCell.m */; };
@@ -43,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		182721B117D76AB800BA9FD5 /* AddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeViewController.h; sourceTree = "<group>"; };
+		182721B217D76AB800BA9FD5 /* AddRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecipeViewController.m; sourceTree = "<group>"; };
+		182721B317D76AB800BA9FD5 /* AddRecipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRecipeViewController.xib; sourceTree = "<group>"; };
 		18A02CAB17D628B3009ACDCE /* FeedsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedsViewController.h; sourceTree = "<group>"; };
 		18A02CAC17D628B3009ACDCE /* FeedsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedsViewController.m; sourceTree = "<group>"; };
 		18A02CAD17D628B3009ACDCE /* FeedsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
@@ -195,6 +200,9 @@
 				18A02CAB17D628B3009ACDCE /* FeedsViewController.h */,
 				18A02CAC17D628B3009ACDCE /* FeedsViewController.m */,
 				18A02CAD17D628B3009ACDCE /* FeedsViewController.xib */,
+				182721B117D76AB800BA9FD5 /* AddRecipeViewController.h */,
+				182721B217D76AB800BA9FD5 /* AddRecipeViewController.m */,
+				182721B317D76AB800BA9FD5 /* AddRecipeViewController.xib */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -326,6 +334,7 @@
 				18A02CC117D63A8B009ACDCE /* recipe.jpg in Resources */,
 				18E05FE817D72D5E0041D264 /* add_image.png in Resources */,
 				18E05FEA17D740840041D264 /* cook.png in Resources */,
+				182721B517D76AB800BA9FD5 /* AddRecipeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +390,7 @@
 				18A02CB317D629DB009ACDCE /* FeedCell.m in Sources */,
 				18E05FE617D71F8C0041D264 /* AFDownloadRequestOperation.m in Sources */,
 				18E05FED17D7420D0041D264 /* NSDate+Calculations.m in Sources */,
+				182721B417D76AB800BA9FD5 /* AddRecipeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

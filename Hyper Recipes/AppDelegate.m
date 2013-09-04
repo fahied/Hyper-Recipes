@@ -63,7 +63,12 @@
     
     _feedVC = [[FeedsViewController alloc]initWithNibName:@"FeedsViewController" bundle:nil];
     
-    self.window.rootViewController = _feedVC;
+    [_feedVC setTitle:@"Recipes"];
+    
+    _navigationVC = [[UINavigationController alloc]initWithRootViewController:_feedVC];
+    
+    
+    self.window.rootViewController = _navigationVC;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

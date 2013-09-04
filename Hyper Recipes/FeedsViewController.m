@@ -88,6 +88,11 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     
     [self.collectionView addSubview:refresh];
+    
+    
+    //Add UIBarButtonItem  +
+    UIBarButtonItem *add = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewRecipe)];
+    self.navigationItem.rightBarButtonItem = add;
 }
 
 -(void)refreshFeedViewController
@@ -96,6 +101,14 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     [self.collectionView reloadData];
 }
 
+
+
+
+
+-(void)addNewRecipe
+{
+    
+}
 
 // collection view data source methods ////////////////////////////////////
 
