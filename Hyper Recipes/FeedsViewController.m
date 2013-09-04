@@ -110,7 +110,6 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     
     cell.descriptionLabel.text = recipe.recipeDescription;
     
-    
     cell.nameLabel.text = recipe.name;
     
     if (!(recipe.photo.url == nil))
@@ -195,49 +194,36 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
 #pragma Download files
 -(void)downloadFile:(NSString*)stringURL WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
 {
-        
     
-        NSString *targetPath = [self completeLocalPath:[stringURL lastPathComponent]];
-        NSURL *remoteURL = [NSURL URLWithString:stringURL];
+    NSString *targetPath = [self completeLocalPath:[stringURL lastPathComponent]];
+    NSURL *remoteURL = [NSURL URLWithString:stringURL];
     
     if ([refQueue containsObject:remoteURL])
     {
         return;
     }
     
-        [refQueue addObject:remoteURL];
+    [refQueue addObject:remoteURL];
     
+    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:remoteURL];
     
-        NSURLRequest *request = [[NSURLRequest alloc]initWithURL:remoteURL];
-        
-        
-        NSFileManager *fm = [NSFileManager defaultManager];
-        NSError*    theError = nil; //error setting
-        if (![fm createDirectoryAtPath:[targetPath stringByDeletingLastPathComponent] withIntermediateDirectories:YES
-                            attributes:nil error:&theError])
+        if ([AFDownloadRequestOperation isFileModified:remoteURL forFile:targetPath])
         {
-            NSLog(@"not created");
-        }
-        else
-        {
-            if ([AFDownloadRequestOperation isFileModified:remoteURL forFile:targetPath])
-            {
-                AFDownloadRequestOperation *downloader = [[AFDownloadRequestOperation alloc]initWithRequest:request targetPath:targetPath shouldResume:YES];
-                
-                [downloader setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-                 {
-                     NSLog(@"File downloaded:  %@",operation.request.URL);
-                     completionBlock(YES,nil);
-                     [refQueue removeObject:request.URL];
-                     //remove ref from queue
-                 } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-                 {
-                     NSLog(@"Failed to download: %@",operation.request.URL);
-                     completionBlock(NO,error);
-                 }];
-                
-                [queue addOperation:downloader];
-            }
+            AFDownloadRequestOperation *downloader = [[AFDownloadRequestOperation alloc]initWithRequest:request targetPath:targetPath shouldResume:YES];
+            
+            [downloader setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+             {
+                 NSLog(@"File downloaded:  %@",operation.request.URL);
+                 completionBlock(YES,nil);
+                 [refQueue removeObject:request.URL];
+                 //remove ref from queue
+             } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+             {
+                 NSLog(@"Failed to download: %@",operation.request.URL);
+                 completionBlock(NO,error);
+             }];
+            
+            [queue addOperation:downloader];
         }
 }
 
