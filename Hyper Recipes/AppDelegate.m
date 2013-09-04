@@ -8,13 +8,13 @@
 
 #import "AppDelegate.h"
 #import <Reachability/Reachability.h>
-#import <JMImageCache/JMImageCache.h>
 
 #import "Recipe.h"
 #import "Photo.h"
 #import "Recipes.h"
 
 #import "FeedsViewController.h"
+#import "NSDate+Calculations.h"
 
 
 
@@ -34,7 +34,6 @@
  
     // Detect the Network availablity using Reachablity Libaray
     [self configureReachablity];
-    
     
     //
     // Configure RestKit's Core Data stack
@@ -57,53 +56,7 @@
     
     // Initialize RestKit
     _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:SERVER_URL]];
-    
-//    Photo *photo = [Photo MR_createEntity];
-//    photo.url = @"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/8/BlueberryCobbler.jpg";
-//    
-//    Recipe *recipe = [Recipe MR_createEntity];
-//    recipe.photo = photo;
-//
-//    recipe.name = @"Fahied TESTING AFNETWORK Post 2";
-//    recipe.recipeDescription = @"I, not events, have the power to make me happy or unhappy today. I can choose which it shall be. Yesterday is dead, tomorrow hasn't arrived yet. I have just one day, today, and I'm going to be happy in it.";
-//    recipe.instructions=  @" Follow the will!";
-//    recipe.favorite = @1;
-//    recipe.difficulty = @"1.0";
-//    
-//    [Recipes postRecipe:recipe WithCompletion:^(BOOL success, NSError *error){
-//        
-//        if (success) {
-//            
-//            NSLog(@"recipe posted to server successfully");
-//            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-//                
-//                if (success) {
-//                    //TODO: refresh view by fetch Core-data items
-//                }
-//            }];
-//        }
-//        else
-//        {
-//            NSLog(@"recipe did not to server successfully");
-//            //TODO: keep record of un-sent items and post them to server as soon as the internet is avialable
-//        }
-//    }];
 
-
-//    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
-//    {
-//        NSLog(@"Refresh View");
-//        [_feedVC refreshFeedViewController];
-//    }];
-
-    
-//    [Recipes deleteRecipe:80 WithCompletion:^(BOOL success, NSError *error)
-//    {
-//        if (success) {
-//            NSLog(@"Recipe delted");
-//        }
-//        
-//    }];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -137,11 +90,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
-        {
-            NSLog(@"Refresh View");
-            [_feedVC refreshFeedViewController];
-        }];
+    [self schedualUpdateRecipesEveryOtherDay];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -178,4 +127,110 @@
     [reach startNotifier];
 }
 
+/**
+ *  Get Recipes update automatically every other day
+ */
+-(void)schedualUpdateRecipesEveryOtherDay
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //set the lastFilesDownloadDate if the application run for first time
+    if ([defaults objectForKey:@"lastRecipeDownloadDate"] == nil)
+    {
+        [defaults setValue:[[NSDate date] beginningOfDay] forKey:@"lastRecipeDownloadDate"];
+        [defaults synchronize];
+        
+        [self downloadRecipesAndUpdateFeedsView];
+        
+    }
+    else if ([defaults objectForKey:@"lastRecipeDownloadDate"] != nil)
+    {
+        NSDate *lastDate = [(NSDate*)[defaults objectForKey:@"lastRecipeDownloadDate"] beginningOfDay];
+        NSDate *today = [[NSDate date]beginningOfDay];
+        
+        //check if the lastFilesDownloadDate is older then today
+        if ([today compare:lastDate] == NSOrderedDescending)
+        {
+            [self downloadRecipesAndUpdateFeedsView];
+        }
+}
+    
+    
+}
+
+
+-(void)downloadRecipesAndUpdateFeedsView
+{
+    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
+     {
+         NSLog(@"Refresh View");
+         [_feedVC refreshFeedViewController];
+     }];
+}
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma Test Code
+/*
+ //    Photo *photo = [Photo MR_createEntity];
+ //    photo.url = @"https://hyper-recipes.s3.amazonaws.com/uploads/recipe/photo/8/BlueberryCobbler.jpg";
+ //
+ //    Recipe *recipe = [Recipe MR_createEntity];
+ //    recipe.photo = photo;
+ //
+ //    recipe.name = @"Fahied TESTING AFNETWORK Post 2";
+ //    recipe.recipeDescription = @"I, not events, have the power to make me happy or unhappy today. I can choose which it shall be. Yesterday is dead, tomorrow hasn't arrived yet. I have just one day, today, and I'm going to be happy in it.";
+ //    recipe.instructions=  @" Follow the will!";
+ //    recipe.favorite = @1;
+ //    recipe.difficulty = @"1.0";
+ //
+ //    [Recipes postRecipe:recipe WithCompletion:^(BOOL success, NSError *error){
+ //
+ //        if (success) {
+ //
+ //            NSLog(@"recipe posted to server successfully");
+ //            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+ //
+ //                if (success) {
+ //                    //TODO: refresh view by fetch Core-data items
+ //                }
+ //            }];
+ //        }
+ //        else
+ //        {
+ //            NSLog(@"recipe did not to server successfully");
+ //            //TODO: keep record of un-sent items and post them to server as soon as the internet is avialable
+ //        }
+ //    }];
+ 
+ 
+ //    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
+ //    {
+ //        NSLog(@"Refresh View");
+ //        [_feedVC refreshFeedViewController];
+ //    }];
+ 
+ 
+ //    [Recipes deleteRecipe:80 WithCompletion:^(BOOL success, NSError *error)
+ //    {
+ //        if (success) {
+ //            NSLog(@"Recipe delted");
+ //        }
+ //        
+ //    }];
+ 
+ */

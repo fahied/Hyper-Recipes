@@ -20,6 +20,7 @@
 		18E05FE617D71F8C0041D264 /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E05FE517D71F8C0041D264 /* AFDownloadRequestOperation.m */; };
 		18E05FE817D72D5E0041D264 /* add_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E05FE717D72D5E0041D264 /* add_image.png */; };
 		18E05FEA17D740840041D264 /* cook.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E05FE917D740840041D264 /* cook.png */; };
+		18E05FED17D7420D0041D264 /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E05FEC17D7420D0041D264 /* NSDate+Calculations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B1F93F317CE742800A8B919 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F93F217CE742800A8B919 /* Recipe.m */; };
 		5B262B4D17D21AFF0072F13D /* HRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B262B4C17D21AFF0072F13D /* HRAPIClient.m */; };
 		5B262B5817D249C70072F13D /* NSManagedObject+Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B262B5717D249C70072F13D /* NSManagedObject+Serialization.m */; };
@@ -58,6 +59,8 @@
 		18E05FE517D71F8C0041D264 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
 		18E05FE717D72D5E0041D264 /* add_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_image.png; sourceTree = "<group>"; };
 		18E05FE917D740840041D264 /* cook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cook.png; sourceTree = "<group>"; };
+		18E05FEB17D7420D0041D264 /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
+		18E05FEC17D7420D0041D264 /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		427EEE498E894D6E80695CF6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		5B1F93F117CE742800A8B919 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
 		5B1F93F217CE742800A8B919 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 		18E05FE317D71F7B0041D264 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				18E05FEB17D7420D0041D264 /* NSDate+Calculations.h */,
+				18E05FEC17D7420D0041D264 /* NSDate+Calculations.m */,
 				18E05FE417D71F8C0041D264 /* AFDownloadRequestOperation.h */,
 				18E05FE517D71F8C0041D264 /* AFDownloadRequestOperation.m */,
 			);
@@ -367,6 +372,7 @@
 				18A02CAE17D628B3009ACDCE /* FeedsViewController.m in Sources */,
 				18A02CB317D629DB009ACDCE /* FeedCell.m in Sources */,
 				18E05FE617D71F8C0041D264 /* AFDownloadRequestOperation.m in Sources */,
+				18E05FED17D7420D0041D264 /* NSDate+Calculations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
