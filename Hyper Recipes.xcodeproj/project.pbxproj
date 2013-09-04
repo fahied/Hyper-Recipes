@@ -11,14 +11,16 @@
 		182721B517D76AB800BA9FD5 /* AddRecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182721B317D76AB800BA9FD5 /* AddRecipeViewController.xib */; };
 		182721B817D76F7A00BA9FD5 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 182721B717D76F7A00BA9FD5 /* NSDate+Helper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		182721BB17D76FAD00BA9FD5 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 182721BA17D76FAD00BA9FD5 /* Recipe.m */; };
+		182721BE17D77D9500BA9FD5 /* nofavorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 182721BC17D77D9500BA9FD5 /* nofavorite.png */; };
+		182721BF17D77D9500BA9FD5 /* nofavorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182721BD17D77D9500BA9FD5 /* nofavorite@2x.png */; };
+		182721C217D77F5700BA9FD5 /* UIImage+Colorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 182721C117D77F5700BA9FD5 /* UIImage+Colorize.m */; };
+		182721C417D7848F00BA9FD5 /* difficult.png in Resources */ = {isa = PBXBuildFile; fileRef = 182721C317D7848F00BA9FD5 /* difficult.png */; };
 		18A02CAE17D628B3009ACDCE /* FeedsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A02CAC17D628B3009ACDCE /* FeedsViewController.m */; };
 		18A02CAF17D628B3009ACDCE /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CAD17D628B3009ACDCE /* FeedsViewController.xib */; };
 		18A02CB317D629DB009ACDCE /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A02CB217D629DB009ACDCE /* FeedCell.m */; };
 		18A02CB517D62B07009ACDCE /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CB417D62B07009ACDCE /* FeedCell.xib */; };
-		18A02CBA17D633AF009ACDCE /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CB617D633AF009ACDCE /* comment.png */; };
-		18A02CBB17D633AF009ACDCE /* comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CB717D633AF009ACDCE /* comment@2x.png */; };
-		18A02CBC17D633AF009ACDCE /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CB817D633AF009ACDCE /* heart.png */; };
-		18A02CBD17D633AF009ACDCE /* heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CB917D633AF009ACDCE /* heart@2x.png */; };
+		18A02CBC17D633AF009ACDCE /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CB817D633AF009ACDCE /* favorite.png */; };
+		18A02CBD17D633AF009ACDCE /* favorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CB917D633AF009ACDCE /* favorite@2x.png */; };
 		18A02CBF17D63798009ACDCE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A02CBE17D63798009ACDCE /* QuartzCore.framework */; };
 		18A02CC117D63A8B009ACDCE /* recipe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CC017D63A8A009ACDCE /* recipe.jpg */; };
 		18E05FE617D71F8C0041D264 /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E05FE517D71F8C0041D264 /* AFDownloadRequestOperation.m */; };
@@ -53,16 +55,19 @@
 		182721B717D76F7A00BA9FD5 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		182721B917D76FAD00BA9FD5 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
 		182721BA17D76FAD00BA9FD5 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
+		182721BC17D77D9500BA9FD5 /* nofavorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nofavorite.png; sourceTree = "<group>"; };
+		182721BD17D77D9500BA9FD5 /* nofavorite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nofavorite@2x.png"; sourceTree = "<group>"; };
+		182721C017D77F5700BA9FD5 /* UIImage+Colorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Colorize.h"; sourceTree = "<group>"; };
+		182721C117D77F5700BA9FD5 /* UIImage+Colorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Colorize.m"; sourceTree = "<group>"; };
+		182721C317D7848F00BA9FD5 /* difficult.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = difficult.png; sourceTree = "<group>"; };
 		18A02CAB17D628B3009ACDCE /* FeedsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedsViewController.h; sourceTree = "<group>"; };
 		18A02CAC17D628B3009ACDCE /* FeedsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedsViewController.m; sourceTree = "<group>"; };
 		18A02CAD17D628B3009ACDCE /* FeedsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
 		18A02CB117D629DB009ACDCE /* FeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCell.h; sourceTree = "<group>"; };
 		18A02CB217D629DB009ACDCE /* FeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell.m; sourceTree = "<group>"; };
 		18A02CB417D62B07009ACDCE /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
-		18A02CB617D633AF009ACDCE /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
-		18A02CB717D633AF009ACDCE /* comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment@2x.png"; sourceTree = "<group>"; };
-		18A02CB817D633AF009ACDCE /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
-		18A02CB917D633AF009ACDCE /* heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@2x.png"; sourceTree = "<group>"; };
+		18A02CB817D633AF009ACDCE /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
+		18A02CB917D633AF009ACDCE /* favorite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite@2x.png"; sourceTree = "<group>"; };
 		18A02CBE17D63798009ACDCE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		18A02CC017D63A8A009ACDCE /* recipe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = recipe.jpg; sourceTree = "<group>"; };
 		18E05FE417D71F8C0041D264 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
@@ -122,13 +127,14 @@
 		18A02CB017D629BE009ACDCE /* views */ = {
 			isa = PBXGroup;
 			children = (
+				182721BC17D77D9500BA9FD5 /* nofavorite.png */,
+				182721BD17D77D9500BA9FD5 /* nofavorite@2x.png */,
 				18E05FE917D740840041D264 /* cook.png */,
 				18E05FE717D72D5E0041D264 /* add_image.png */,
 				18A02CC017D63A8A009ACDCE /* recipe.jpg */,
-				18A02CB617D633AF009ACDCE /* comment.png */,
-				18A02CB717D633AF009ACDCE /* comment@2x.png */,
-				18A02CB817D633AF009ACDCE /* heart.png */,
-				18A02CB917D633AF009ACDCE /* heart@2x.png */,
+				18A02CB817D633AF009ACDCE /* favorite.png */,
+				182721C317D7848F00BA9FD5 /* difficult.png */,
+				18A02CB917D633AF009ACDCE /* favorite@2x.png */,
 				18A02CB117D629DB009ACDCE /* FeedCell.h */,
 				18A02CB217D629DB009ACDCE /* FeedCell.m */,
 				18A02CB417D62B07009ACDCE /* FeedCell.xib */,
@@ -168,6 +174,8 @@
 		5B262B5217D248F00072F13D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				182721C017D77F5700BA9FD5 /* UIImage+Colorize.h */,
+				182721C117D77F5700BA9FD5 /* UIImage+Colorize.m */,
 				182721B617D76F7A00BA9FD5 /* NSDate+Helper.h */,
 				182721B717D76F7A00BA9FD5 /* NSDate+Helper.m */,
 				18E05FEB17D7420D0041D264 /* NSDate+Calculations.h */,
@@ -332,14 +340,15 @@
 				5BE2B29817C7AE9A0031A7CE /* Default-568h@2x.png in Resources */,
 				18A02CAF17D628B3009ACDCE /* FeedsViewController.xib in Resources */,
 				18A02CB517D62B07009ACDCE /* FeedCell.xib in Resources */,
-				18A02CBA17D633AF009ACDCE /* comment.png in Resources */,
-				18A02CBB17D633AF009ACDCE /* comment@2x.png in Resources */,
-				18A02CBC17D633AF009ACDCE /* heart.png in Resources */,
-				18A02CBD17D633AF009ACDCE /* heart@2x.png in Resources */,
+				18A02CBC17D633AF009ACDCE /* favorite.png in Resources */,
+				18A02CBD17D633AF009ACDCE /* favorite@2x.png in Resources */,
 				18A02CC117D63A8B009ACDCE /* recipe.jpg in Resources */,
 				18E05FE817D72D5E0041D264 /* add_image.png in Resources */,
 				18E05FEA17D740840041D264 /* cook.png in Resources */,
 				182721B517D76AB800BA9FD5 /* AddRecipeViewController.xib in Resources */,
+				182721BE17D77D9500BA9FD5 /* nofavorite.png in Resources */,
+				182721BF17D77D9500BA9FD5 /* nofavorite@2x.png in Resources */,
+				182721C417D7848F00BA9FD5 /* difficult.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +406,7 @@
 				182721B417D76AB800BA9FD5 /* AddRecipeViewController.m in Sources */,
 				182721B817D76F7A00BA9FD5 /* NSDate+Helper.m in Sources */,
 				182721BB17D76FAD00BA9FD5 /* Recipe.m in Sources */,
+				182721C217D77F5700BA9FD5 /* UIImage+Colorize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

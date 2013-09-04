@@ -22,7 +22,17 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *isFavoriteLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *difficultyLabel;
+
+
+
+
+
+@property (weak, nonatomic) IBOutlet UILabel *bNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bRecipeInstructions;
+@property (weak, nonatomic) IBOutlet UIView *bFeedContainer;
 
 
 @end

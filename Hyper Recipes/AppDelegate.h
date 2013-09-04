@@ -26,7 +26,7 @@
 
 
 /**
- *  <#Description#>
+ *  
  */
 @property(strong, nonatomic) RKObjectManager *objectManager;
 

@@ -14,7 +14,7 @@
 @interface Recipe : NSManagedObject
 
 @property (nonatomic, retain) NSString * difficulty;
-@property (nonatomic, retain) NSNumber * favorite;
+@property (assign) BOOL favorite;
 @property (nonatomic, retain) NSString * instructions;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * recipeDescription;

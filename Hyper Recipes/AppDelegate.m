@@ -15,6 +15,8 @@
 
 #import "FeedsViewController.h"
 #import "NSDate+Calculations.h"
+#import "UIImage+Colorize.h"
+
 
 
 
@@ -70,11 +72,40 @@
     
     self.window.rootViewController = _navigationVC;
     
+    
+    //
+    [self customizedPhoneTheme];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
 
+
+-(void)customizedPhoneTheme
+{
+    [[UIApplication sharedApplication]
+     setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
+    
+    
+    UIColor* mainColor = [UIColor colorWithRed:222.0/255 green:59.0/255 blue:47.0/255 alpha:1.0f];
+
+    
+    //set the color of navigation bar items
+    [[UINavigationBar appearance] setTintColor:mainColor];
+    
+    // Set solid color for UINavigationbar
+    UIImage *bkImage = [UIImage imageWithColor:mainColor];
+    [[UINavigationBar appearance] setBackgroundImage:bkImage forBarMetrics:UIBarMetricsDefault];
+    
+    
+    //set the font for segment in cutomer view controller
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"GillSans-Bold" size:15.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    
+
+    [[UIBarButtonItem appearance] setTintColor:mainColor];
+  
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -145,6 +145,22 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     
     cell.nameLabel.text = recipe.name;
     
+    if (recipe.favorite )
+    {
+        cell.favoriteIconImageView.image = [UIImage imageNamed:@"favorite"];
+        cell.isFavoriteLabel.text = @"favorite";
+    }
+    else
+    {
+        cell.favoriteIconImageView.image = [UIImage imageNamed:@"nofavorite"];
+        cell.isFavoriteLabel.text = @"not favorite";
+    }
+    
+    
+    cell.bNameLabel.text = recipe.name;
+    
+    cell.bRecipeInstructions.text = recipe.instructions;
+    
     if (!(recipe.photo.url == nil))
     {
         NSString *imgPath = [self completeLocalPath:[recipe.photo.url lastPathComponent]];
@@ -196,6 +212,21 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     printf("Selected View index=%d",indexPath.row);
+    
+    FeedCell *cell = (FeedCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+    
+    //[[cell.feedContainer subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    
+    if (cell.feedContainer.hidden)
+    {
+        cell.feedContainer.hidden = NO;
+    }
+    else
+    {
+        cell.feedContainer.hidden = YES;
+    }
+    
+    
 }
 - (void)didReceiveMemoryWarning
 {
