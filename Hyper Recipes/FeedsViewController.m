@@ -10,18 +10,23 @@
 #import "FeedCell.h"
 
 #import <UIImageView+JMImageCache.h>
+#import "AFDownloadRequestOperation.h"
 
 
 #import "Recipe.h"
 #import "Photo.h"
 
-
+#import "Recipes.h"
+#import "AppDelegate.h"
 
 
 @interface FeedsViewController ()
 {
     NSArray *recipes;
     UIImage *placeholder;
+    UIImage *addImage;
+    NSOperationQueue *queue;
+    NSMutableArray *refQueue;
 }
 
 @end
@@ -46,11 +51,19 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     UINib *cellNib = [UINib nibWithNibName:@"FeedCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:kCellReuseIdentifier];
     
+    self.collectionView.backgroundColor = [UIColor lightGrayColor];
     
     [super viewDidLoad];
     
     
+    queue = [[NSOperationQueue alloc]init];
+    queue.name = @"fileDownloader";
+    queue.MaxConcurrentOperationCount = 2;
+    
+    refQueue = [[NSMutableArray alloc]init];
+    
     placeholder =[UIImage imageNamed:@"recipe.jpg"];
+    addImage = [UIImage imageNamed:@"add_image"];
     
     recipes = [NSArray arrayWithArray:[Recipe MR_findAll]];
     
@@ -59,6 +72,17 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [self.collectionView setCollectionViewLayout:flowLayout];
     [self.collectionView setAllowsSelection:YES];
+    
+    
+    
+    // add refreshview to update contents
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.collectionView addSubview:refresh];
 }
 
 -(void)refreshFeedViewController
@@ -91,12 +115,33 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     
     if (!(recipe.photo.url == nil))
     {
-        NSURL *photoURL = [NSURL URLWithString:recipe.photo.url];
+        NSString *imgPath = [self completeLocalPath:[recipe.photo.url lastPathComponent]];
         
-        [cell.picImageView setImageWithURL:photoURL placeholderImage:placeholder];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:imgPath])
+        {
+            NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imgPath]];
+            cell.picImageView.image = [[UIImage alloc] initWithData:imgData];
+        }
+        else
+        {
+            cell.picImageView.image = placeholder;
+            
+            [self downloadFile:recipe.photo.url WithCompletion:^(BOOL success, NSError *error)
+             {
+                 if (success)
+                 {
+                     
+                     NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imgPath]];
+                     cell.picImageView.image = [[UIImage alloc] initWithData:imgData];
+                 }
+                 
+             }];
+        }
     }
-    
-      
+    else
+    {
+        cell.picImageView.image = addImage;
+    }
     return cell;
     
     
@@ -112,4 +157,101 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
+-(void)refreshView:(UIRefreshControl *)refresh {
+    
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    
+    // custom refresh logic would be placed here...
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    
+    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
+                             
+    [formatter stringFromDate:[NSDate date]]];
+    
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    
+        [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
+        {
+            [self refreshFeedViewController];
+            [refresh endRefreshing];
+        }];
+    
+}
+
+
+
+
+
+
+
+
+
+#pragma Download files
+-(void)downloadFile:(NSString*)stringURL WithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
+{
+        
+    
+        NSString *targetPath = [self completeLocalPath:[stringURL lastPathComponent]];
+        NSURL *remoteURL = [NSURL URLWithString:stringURL];
+    
+    if ([refQueue containsObject:remoteURL])
+    {
+        return;
+    }
+    
+        [refQueue addObject:remoteURL];
+    
+    
+        NSURLRequest *request = [[NSURLRequest alloc]initWithURL:remoteURL];
+        
+        
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSError*    theError = nil; //error setting
+        if (![fm createDirectoryAtPath:[targetPath stringByDeletingLastPathComponent] withIntermediateDirectories:YES
+                            attributes:nil error:&theError])
+        {
+            NSLog(@"not created");
+        }
+        else
+        {
+            if ([AFDownloadRequestOperation isFileModified:remoteURL forFile:targetPath])
+            {
+                AFDownloadRequestOperation *downloader = [[AFDownloadRequestOperation alloc]initWithRequest:request targetPath:targetPath shouldResume:YES];
+                
+                [downloader setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+                 {
+                     NSLog(@"File downloaded:  %@",operation.request.URL);
+                     completionBlock(YES,nil);
+                     [refQueue removeObject:request.URL];
+                     //remove ref from queue
+                 } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+                 {
+                     NSLog(@"Failed to download: %@",operation.request.URL);
+                     completionBlock(NO,error);
+                 }];
+                
+                [queue addOperation:downloader];
+            }
+        }
+}
+
+-(void)cancleQueueOperataions
+{
+    [queue cancelAllOperations];
+}
+
+#pragma Utility Fuctions
+-(NSString*)completeLocalPath:(NSString*)fileName
+{
+    return [NSHomeDirectory() stringByAppendingPathComponent:[@"Documents/" stringByAppendingString:fileName]];
+}
+
+
 @end

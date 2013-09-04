@@ -90,11 +90,11 @@
 //    }];
 
 
-    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
-    {
-        NSLog(@"Refresh View");
-        [_feedVC refreshFeedViewController];
-    }];
+//    [Recipes getRecipesWithCompletion:^(BOOL success, NSError *error)
+//    {
+//        NSLog(@"Refresh View");
+//        [_feedVC refreshFeedViewController];
+//    }];
 
     
 //    [Recipes deleteRecipe:80 WithCompletion:^(BOOL success, NSError *error)
