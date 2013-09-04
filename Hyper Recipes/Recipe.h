@@ -2,7 +2,7 @@
 //  Recipe.h
 //  Hyper Recipes
 //
-//  Created by Fahied on 8/28/13.
+//  Created by Fahied ENT on 9/4/13.
 //  Copyright (c) 2013 Fahied. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * recipeDescription;
 @property (nonatomic, retain) NSNumber * recipeID;
+@property (nonatomic, retain) NSDate * modifiedDate;
 @property (nonatomic, retain) Photo *photo;
 
 @end

@@ -8,6 +8,7 @@
         <attribute name="difficulty" attributeType="String" syncable="YES"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="instructions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modifiedDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="3" syncable="YES"/>
         <attribute name="recipeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recipeID" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
@@ -15,6 +16,6 @@
     </entity>
     <elements>
         <element name="Photo" positionX="504" positionY="72" width="128" height="73"/>
-        <element name="Recipe" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="Recipe" positionX="160" positionY="192" width="128" height="165"/>
     </elements>
 </model>

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		182721B417D76AB800BA9FD5 /* AddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182721B217D76AB800BA9FD5 /* AddRecipeViewController.m */; };
 		182721B517D76AB800BA9FD5 /* AddRecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182721B317D76AB800BA9FD5 /* AddRecipeViewController.xib */; };
+		182721B817D76F7A00BA9FD5 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 182721B717D76F7A00BA9FD5 /* NSDate+Helper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		182721BB17D76FAD00BA9FD5 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 182721BA17D76FAD00BA9FD5 /* Recipe.m */; };
 		18A02CAE17D628B3009ACDCE /* FeedsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A02CAC17D628B3009ACDCE /* FeedsViewController.m */; };
 		18A02CAF17D628B3009ACDCE /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A02CAD17D628B3009ACDCE /* FeedsViewController.xib */; };
 		18A02CB317D629DB009ACDCE /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A02CB217D629DB009ACDCE /* FeedCell.m */; };
@@ -23,7 +25,6 @@
 		18E05FE817D72D5E0041D264 /* add_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E05FE717D72D5E0041D264 /* add_image.png */; };
 		18E05FEA17D740840041D264 /* cook.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E05FE917D740840041D264 /* cook.png */; };
 		18E05FED17D7420D0041D264 /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E05FEC17D7420D0041D264 /* NSDate+Calculations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		5B1F93F317CE742800A8B919 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F93F217CE742800A8B919 /* Recipe.m */; };
 		5B262B4D17D21AFF0072F13D /* HRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B262B4C17D21AFF0072F13D /* HRAPIClient.m */; };
 		5B262B5817D249C70072F13D /* NSManagedObject+Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B262B5717D249C70072F13D /* NSManagedObject+Serialization.m */; };
 		5BA8AEDC17C7BB7F00EEC9ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA8AEDB17C7BB7F00EEC9ED /* CoreData.framework */; };
@@ -48,6 +49,10 @@
 		182721B117D76AB800BA9FD5 /* AddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeViewController.h; sourceTree = "<group>"; };
 		182721B217D76AB800BA9FD5 /* AddRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecipeViewController.m; sourceTree = "<group>"; };
 		182721B317D76AB800BA9FD5 /* AddRecipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRecipeViewController.xib; sourceTree = "<group>"; };
+		182721B617D76F7A00BA9FD5 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		182721B717D76F7A00BA9FD5 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		182721B917D76FAD00BA9FD5 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
+		182721BA17D76FAD00BA9FD5 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
 		18A02CAB17D628B3009ACDCE /* FeedsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedsViewController.h; sourceTree = "<group>"; };
 		18A02CAC17D628B3009ACDCE /* FeedsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedsViewController.m; sourceTree = "<group>"; };
 		18A02CAD17D628B3009ACDCE /* FeedsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
@@ -67,8 +72,6 @@
 		18E05FEB17D7420D0041D264 /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
 		18E05FEC17D7420D0041D264 /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		427EEE498E894D6E80695CF6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		5B1F93F117CE742800A8B919 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
-		5B1F93F217CE742800A8B919 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
 		5B262B4B17D21AFF0072F13D /* HRAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAPIClient.h; sourceTree = "<group>"; };
 		5B262B4C17D21AFF0072F13D /* HRAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAPIClient.m; sourceTree = "<group>"; };
 		5B262B5617D249C70072F13D /* NSManagedObject+Serialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Serialization.h"; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 		5B262B5217D248F00072F13D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				182721B617D76F7A00BA9FD5 /* NSDate+Helper.h */,
+				182721B717D76F7A00BA9FD5 /* NSDate+Helper.m */,
 				18E05FEB17D7420D0041D264 /* NSDate+Calculations.h */,
 				18E05FEC17D7420D0041D264 /* NSDate+Calculations.m */,
 				5B262B5617D249C70072F13D /* NSManagedObject+Serialization.h */,
@@ -176,9 +181,9 @@
 		5BA8AEE917C922FD00EEC9ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				182721B917D76FAD00BA9FD5 /* Recipe.h */,
+				182721BA17D76FAD00BA9FD5 /* Recipe.m */,
 				5BA8AEDD17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld */,
-				5B1F93F117CE742800A8B919 /* Recipe.h */,
-				5B1F93F217CE742800A8B919 /* Recipe.m */,
 				5BAA16C917C932EC0048F07E /* Photo.h */,
 				5BAA16CA17C932EC0048F07E /* Photo.m */,
 			);
@@ -383,7 +388,6 @@
 				5BA8AEDF17C7BC3F00EEC9ED /* HyperRecipes.xcdatamodeld in Sources */,
 				5BAA16CB17C932EC0048F07E /* Photo.m in Sources */,
 				5BAA16D217C93A770048F07E /* Recipes.m in Sources */,
-				5B1F93F317CE742800A8B919 /* Recipe.m in Sources */,
 				5B262B4D17D21AFF0072F13D /* HRAPIClient.m in Sources */,
 				5B262B5817D249C70072F13D /* NSManagedObject+Serialization.m in Sources */,
 				18A02CAE17D628B3009ACDCE /* FeedsViewController.m in Sources */,
@@ -391,6 +395,8 @@
 				18E05FE617D71F8C0041D264 /* AFDownloadRequestOperation.m in Sources */,
 				18E05FED17D7420D0041D264 /* NSDate+Calculations.m in Sources */,
 				182721B417D76AB800BA9FD5 /* AddRecipeViewController.m in Sources */,
+				182721B817D76F7A00BA9FD5 /* NSDate+Helper.m in Sources */,
+				182721BB17D76FAD00BA9FD5 /* Recipe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,9 @@
 #import "FeedsViewController.h"
 #import "FeedCell.h"
 
-#import <UIImageView+JMImageCache.h>
+#import "NSDate+Helper.h"
+
+
 #import "AFDownloadRequestOperation.h"
 
 
@@ -93,7 +95,15 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     //Add UIBarButtonItem  +
     UIBarButtonItem *add = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewRecipe)];
     self.navigationItem.rightBarButtonItem = add;
+    
+    
+    _addRecipeVC = [[AddRecipeViewController alloc]init];
+    [_addRecipeVC setTitle:@"add recipe"];
 }
+
+
+
+
 
 -(void)refreshFeedViewController
 {
@@ -105,9 +115,10 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
 
 
 
+
 -(void)addNewRecipe
 {
-    
+    [self.navigationController pushViewController:_addRecipeVC animated:YES];
 }
 
 // collection view data source methods ////////////////////////////////////
@@ -128,6 +139,9 @@ static NSString * const kCellReuseIdentifier = @"feedCell";
     FeedCell *cell = (FeedCell*)[collectionView dequeueReusableCellWithReuseIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
     
     cell.descriptionLabel.text = recipe.recipeDescription;
+    
+    //: formate time using Utitlity category NSDATE+Helper    
+    cell.dateLabel.text =[NSDate stringForDisplayFromDate:recipe.modifiedDate];
     
     cell.nameLabel.text = recipe.name;
     

@@ -29,6 +29,10 @@
 +(void)getRecipesWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock
 {
     
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"; // google date format /RFC 3339
+    
     //TODO: make server responsible to provide the records that have been newly made after a certain date or modified.
     
     // delete all records from core-data
@@ -42,8 +46,10 @@
     // Create new Recipe mapping
     RKEntityMapping *recipeMapping = [RKEntityMapping mappingForEntityForName:@"Recipe" inManagedObjectStore:managedObjectStore];
     
+    [recipeMapping setDateFormatters:[NSArray arrayWithObject:formatter]];
+    
     [recipeMapping addAttributeMappingsFromDictionary:@{ @"id" :@"recipeID",@"name" :@"name",@"description":@"recipeDescription",
-     @"instructions" :@"instructions",@"favorite" :@"favorite",@"difficulty" :@"difficulty"}];
+     @"instructions" :@"instructions",@"favorite" :@"favorite",@"difficulty" :@"difficulty", @"updated_at":@"modifiedDate"}];
     
     // Create new Photo mapping
     RKEntityMapping *photoMapping = [RKEntityMapping mappingForEntityForName:@"Photo" inManagedObjectStore:managedObjectStore];

@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddRecipeViewController.h"
+
 
 @interface FeedsViewController :UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (strong, nonatomic) AddRecipeViewController *addRecipeVC;
 
 -(void)refreshFeedViewController;
 
